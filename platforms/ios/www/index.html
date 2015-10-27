@@ -1,0 +1,1055 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Car Service</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.min.css" />
+		<link rel="stylesheet" href="vendor/waves/waves.min.css" />
+		<link rel="stylesheet" href="vendor/wow/animate.css" />
+		<link rel="stylesheet" href="css/nativedroid2.css" />
+		<link rel="stylesheet" href="vendor/swipebox/css/swipebox.min.css">
+		<style>
+			/* Prevent FOUC */
+			body { opacity: 0; }
+		</style>
+	</head>
+	
+	<body class="clr-accent-brown">
+		<div data-role="page" id="loginPage">
+			<div role="main" class="ui-content" data-inset="false">
+				<div class="row around-xs">
+					<div class="col-xs-10 col-sm-6 col-md-6 col-lg-4">
+						<div class="nd2-card">
+							<br>
+							<div class="row around-xs">
+								<div class="col-xs-10">
+									<div class="box card-supporting-text">
+										<form id="formLogin">
+											<label for="username">Nombre de usuario</label>
+											<input type="text" name="username" id="usernameLogin" value="" data-clear-btn="true" >
+											<label for="password">Contraseña</label>
+											<input type="password" name="password" id="login_password" value="" data-clear-btn="true" >
+											<br>
+											<a href="#" id="btnLogin" class="ui-btn clr-btn-deep-orange">Iniciar sesión</a>
+										</form>
+										<br>
+										<a href="#" class="ui-btn ui-mini clr-btn-accent-deep-orange" id="register">Registrarse</a>
+									</div>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="ownerPage">
+			<div data-role="header" data-position="fixed" id="header" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back" data-direction="reverse">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i></a>
+				<h1 id="title" class="">Cliente</h1>
+			</div>
+			<div role="main" class="ui-content" data-inset="false">
+				<div class="row around-xs">
+					<div class="col-xs-10 col-sm-6 col-md-6 col-lg-4">
+						<div class="nd2-card">
+							<br>
+							<div class="row around-xs">
+								<div class="col-xs-10">
+									<div class="box card-supporting-text">
+										<form id="formOwner">
+											<div class="row">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">group</i>
+												</div>
+												<div class="col-xs-10">
+													<fieldset data-role="controlgroup">
+														<legend>Tipo de cliente</legend>
+														<input type="radio" name="type" id="typePerson" value="Person" >
+														<label for="typePerson">Persona</label>
+														<input type="radio" name="type" id="typeBusiness" value="Business">
+														<label for="typeBusiness">Empresa</label>
+													</fieldset>
+												</div>
+											</div>
+											<div class="row" id="divBusiness">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">business</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="business_name">Razón social</label>
+													<input type="text" name="business_name" id="business_name" value="" data-clear-btn="true">
+													<label for="rfc">RFC</label>
+													<input type="text" name="rfc" id="rfc" value="" data-clear-btn="true" style="text-transform:uppercase;">
+												</div>
+											</div>
+											<div class="row" id="divPerson">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">person</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="first_name">Nombre(s)</label>
+													<input type="text" name="first_name" 
+													id="first_name" value="" data-clear-btn="true">
+													<label for="last_name">Apellido paterno</label>
+													<input type="text" name="last_name" 
+													id="last_name" value="" data-clear-btn="true">
+													<label for="mother_maiden_name">Apellido materno</label>
+													<input type="text" name="mother_maiden_name" 
+													id="mother_maiden_name" value="" data-clear-btn="true">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">verified_user</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="username">Nombre de usuario</label>
+													<input type="text" name="username" 
+													id="username" value="" data-clear-btn="true">
+													<label for="password">Contraseña</label>
+													<input type="password" name="password" 
+													id="password" value="" data-clear-btn="true">
+													<label for="confirm_password">Confirmar contraseña</label>
+													<input type="password" name="confirm_password" 
+													id="confirm_password" value="" data-clear-btn="true">
+												</div>
+											</div>
+											<div class="row secure_code">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">lock</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="secure_code">
+														Código de seguridad 
+														<a href="#" class="ui-btn clr-btn-accent-deep-orange ui-btn-inline" data-role="toast" data-toast-message="Favor de solicitarlo en su taller">
+															<i class="zmdi zmdi-help-outline"></i>
+														</a>
+													</label>
+													<input type="text" name="secure_code" 
+													id="secure_code" value="" data-clear-btn="true">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">place</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="street">Calle y número</label>
+													<input type="text" name="street" 
+													id="street" value="" data-clear-btn="true">
+													<label for="neighborhood">Colonia</label>
+													<input type="text" name="neighborhood" 
+													id="neighborhood" value="" data-clear-btn="true">
+													<label for="state" class="select">Estado</label>
+													<select name="state_id" id="state" data-native-menu="false">
+													</select>
+													<label for="town" class="select">Municipio</label>
+													<select name="town_id" id="town" data-native-menu="false">
+													</select>
+													<label for="postal_code">Código postal</label>
+													<input type="text" name="postal_code" 
+													id="postal_code" value="" data-clear-btn="true">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">email</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="email">Correo electrónico</label>
+													<input type="text" name="email" 
+													id="email" value="" data-clear-btn="true">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-2">
+													<i class="material-icons clr-deep-orange">phone</i>
+												</div>
+												<div class="col-xs-10">
+													<label for="phone_number">Teléfono local</label>
+													<input type="text" name="phone_number" 
+													id="phone_number" value="" data-clear-btn="true">
+													<label for="mobile_phone_number">Teléfono móvil</label>
+													<input type="text" name="mobile_phone_number" 
+													id="mobile_phone_number" value="" data-clear-btn="true">
+												</div>
+											</div>
+											<br>
+											<a href="#" id="btnSaveOwner" class="ui-btn clr-btn-deep-orange">Guardar</a>
+										</form>
+									</div>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div data-role="page" id="carsPage">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false">
+				<a href="#main_menu" class="ui-btn ui-btn-left">
+					<i class="zmdi zmdi-menu"></i></a>
+				<h1 id="title" class="">Vehículos</h1>
+				<ul data-role="nd2tabs" data-swipe="true">
+					<li data-tab="cars_in_operation"data-tab-active="true">En operación</li>
+					<li data-tab="cars_in_workshop" >En taller</li>
+				</ul>
+			</div>
+			<div id="carsMain" role="main" class="ui-content" data-inset="false">
+				<div data-role="nd2tab" data-tab="cars_in_operation">
+					<center><h3 id="no-cars_in_operation">No tiene vehículos en operación por el momento</h3></center>
+					<ul data-role="listwiew" data-icon="false" id="cars_in_operation">
+					</ul>
+				</div>
+				<div data-role="nd2tab" data-tab="cars_in_workshop">
+					<center><h3 id="no-cars_in_workshop">No tiene vehículos en taller por el momento</h3></center>
+					<ul data-role="listwiew" data-icon="false" id="cars_in_workshop">
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="notfPage">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false">
+				<a href="#main_menu" class="ui-btn ui-btn-left">
+					<i class="zmdi zmdi-menu"></i>
+				</a>
+				<a href="#" id="update_notf" class="ui-btn ui-btn-right">
+					<i class="material-icons">refresh</i>
+				</a>
+				<h1 id="title" class="">Notificaciones</h1>
+			</div>
+
+			<div id="notfMain" role="main" class="ui-content" data-inset="false">
+				<center><h3 id="no-notif">No tiene nuevas notificaciones</h3></center>
+				<ul data-role="listwiew" data-icon="false" id="notifications">
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="page" id="serviceOrderPage">
+			<div id="service_order_id" style="display:none"></div>
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back" data-direction="reverse">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i></a>
+				<h1 id="titleNotification" class="">Entrada de vehículo</h1>
+			</div>
+
+			<div role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs">
+						<div class="col-xs-10">
+							<br>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Estatus</b>
+									<p id="order_status">Lorem Impsum</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Tipo de servicio</b>
+									<p id="service_name">Lorem Impsum</p>
+								</div>
+							</div>
+							<div class="row ">
+								<div class="col-xs-12 col-sm-6">
+									<b>Nombre usuario a cargo</b>
+									<p id="order_user">Lorem Impsum Et</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Taller</b>
+									<p id="order_workshop">Commodo Consequat</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Vehículo</b>
+									<p id="order_car">Nostrud Exercitation MMXIV, SN 1234567890</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de creación</b>
+									<p id="order_datecreated">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de cierre</b>
+									<p id="order_dateclosed">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de aceptación</b>
+									<p id="order_dateagree">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de rechazo</b>
+									<p id="order_datedisagree">Ante Diem III Nonas MMXV</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Cliente autoriza emplear partes y refacciones usadas o remanufacturadas</b>
+									<p id="owner_allow_used_parts">Et</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Cliente suministra partes, refacciones y otros</b>
+									<p id="owner_supplied_parts">Et</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Dirección de recepción</b>
+									<p id="pick_up_address">Lorem Impsum Et Cunctarum</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Dirección de entrega</b>
+									<p id="delivery_address">Lorem Impsum Et Cunctarum</p>
+								</div>
+							</div>
+							<div class="order_content">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6">
+										<b>Kilometraje</b>
+										<p id="km">MXCV</p>
+									</div>
+								</div>
+								<table data-role="table" data-mode="reflow" id="orderLevels"
+									class="ui-responsive table-stroke order_content_table">
+									<thead>
+										<tr>
+											<th>Liquído</th>
+											<th>Nivel</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Nivel de gasolina</td>
+											<td id="fuel_level">3/4</td>
+										</tr>
+										<tr>
+											<td>Líquido de frenos</td>
+											<td id="brake_fluid">Falta</td>
+										</tr>
+										<tr>
+											<td>Anticongelante</td>
+											<td id="antifreeze">Falta</td>
+										</tr>
+										<tr>
+											<td>Líquido de dirección</td>
+											<td id="power_steering_fluid">A Nivel</td>
+										</tr>
+										<tr>
+											<td>Limpiaparabrisas</td>
+											<td id="wiper_fluid">A Nivel</td>
+										</tr>
+										<tr>
+											<td>Aceite</td>
+											<td id="oil">A Nivel</td>
+										</tr>
+									</tbody>
+								</table>
+								<br>
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-3">
+										<a href="#" class="ui-btn clr-btn-accent-deep-orange" 
+										id="inside_photos">Fotos interior</a>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3">
+										<a href="#" class="ui-btn clr-btn-accent-deep-orange" 
+										id="outside_photos">Fotos exterior</a>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3">
+										<a href="#" class="ui-btn clr-btn-accent-deep-orange" 
+										id="motor_photos">Fotos motor</a>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-3">
+										<a href="#" class="ui-btn clr-btn-accent-deep-orange" 
+										id="trunk_photos">Fotos porta equipaje</a>
+									</div>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" id="order_footer" data-tap-toggle="false">
+				<div class="row center-xs">
+					<div class="col-xs">
+						<div class="box">
+								<a href="#" id="disagree_order" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange"><i class='zmdi zmdi-close zmd-2x'></i>Rechazar</a>
+						</div>
+					</div>
+					<div class="col-xs">
+						<div class="box">
+							<a href="#" id="agree_order" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange"><i class='zmdi zmdi-check zmd-2x'></i>Aceptar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="serviceDiagnosticPage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back" data-direction="reverse">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i></a>
+				<h1 id="titleNotification" class="">Diagnóstico</h1>
+			</div>
+
+			<div role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs">
+						<div class="col-xs-10">
+							<br>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Estatus</b>
+									<p id="diagnostic_status">Lorem Impsum</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Nombre usuario a cargo</b>
+									<p id="diagnostic_user">Lorem Impsum Et</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Taller</b>
+									<p id="diagnostic_workshop">Commodo Consequat</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Vehículo</b>
+									<p id="diagnostic_car">Nostrud Exercitation MMXIV, SN 1234567890</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de creacion</b>
+									<p id="diagnostic_datecreated">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de finalizacion</b>
+									<p id="diagnostic_dateclosed">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de aceptacion</b>
+									<p id="diagnostic_dateagree">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de rechazo</b>
+									<p id="diagnostic_datedisagree">Ante Diem III Nonas MMXV</p>
+								</div>
+							</div>
+							<br>
+							<div id="diagnostic_content">
+								<table data-role="table" data-mode="reflow" 
+								class="ui-responsive table-stroke" id="diagnosticParts">
+									<thead>
+										<tr>
+											<th>Parte</th>
+											<th>Estado</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Frenos delanteros</td>
+											<td id="front_brakes">Bonum</td>
+										</tr>
+										<tr>
+											<td>Frenos traseros</td>
+											<td id="rear_brakes">Stabilis</td>
+										</tr>
+										<tr>
+											<td>Amortiguadores delanteros</td>
+											<td id="front_shock_absorber">Malum</td>
+										</tr>
+										<tr>
+											<td>Amortiguadores traseros</td>
+											<td id="rear_shock_absorber">Bonum</td>
+										</tr>
+										<tr>
+											<td>Suspensión</td>
+											<td id="suspension">Stabilis</td>
+										</tr>
+										<tr>
+											<td>Llantas</td>
+											<td id="tires">Malum</td>
+										</tr>
+										<tr>
+											<td>Bandas</td>
+											<td id="bands">Bonum</td>
+										</tr>
+									</tbody>
+								</table>
+								<br>
+								<div class="row">
+									<div class="col-xs-12 col-sm-6">
+										<b>Diagnóstico</b>
+										<p id="diagnostic_description">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										</p>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" id="diagnostic_footer" data-tap-toggle="false">
+				<div class="row center-xs">
+					<div class="col-xs">
+						<div class="box">
+								<a href="#" id="disagree_diagnostic" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange"><i class='zmdi zmdi-close zmd-2x'></i>Rechazar</a>
+						</div>
+					</div>
+					<div class="col-xs">
+						<div class="box">
+							<a href="#" id="agree_diagnostic" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange"><i class='zmdi zmdi-check zmd-2x'></i>Aceptar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="quotePage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back" data-direction="reverse">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i></a>
+				<h1 id="titleNotification" class="">Cotización</h1>
+			</div>
+
+			<div role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs">
+						<div class="col-xs-10">
+							<br>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Estatus</b>
+									<p id="quote_status">Lorem Impsum</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Usuario</b>
+									<p id="quote_user"></p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Taller</b>
+									<p id="quote_workshop">Commodo Consequat</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de creacion</b>
+									<p id="quote_datecreated">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de finalizacion</b>
+									<p id="quote_dateclosed">Ante Diem III Nonas MMXV</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha estimada terminación servicio</b>
+									<p id="quote_dateestimated">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de aceptación</b>
+									<p id="quote_dateagree">Ante Diem III Nonas MMXV</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Fecha de rechazo</b>
+									<p id="quote_datedisagree">Ante Diem III Nonas MMXV</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Vehículo</b>
+									<p id="quote_car">Nostrud Exercitation MMXIV, SN 1234567890</p>
+								</div>
+							</div>
+							
+							<div id="quote_content">
+								<table data-role="table" data-mode="reflow" id="quoteTable"
+								class="ui-responsive table-stroke">
+									<thead>
+										<tr>
+											<th>Cant.</th>
+											<th>Descripción</th>
+											<th>Subtotal</th>
+										</tr>
+									</thead>
+									<tbody id="quote_items">
+										<tr>
+											<td>1.0</td>
+											<td>Occaecat cupidatat</td>
+											<td>$ 1,000.00</td>
+										</tr>
+										<tr>
+											<td>4.0</td>
+											<td>Deserunt mollit</td>
+											<td>$ 2,500.00</td>
+										</tr>
+										<tr>
+											<td>2.0</td>
+											<td>Reprehenderit in voluptate</td>
+											<td>$ 200.00</td>
+										</tr>
+									</tbody>
+								</table>
+								<br>
+								<div class="row">
+									<div class="col-xs-12 col-sm-4">
+										<b>Subtotal</b>
+										<p id="quote_subtotal">Ante Diem III Nonas MMXV</p>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<b>IVA</b>
+										<p id="quote_tax">Ante Diem III Nonas MMXV</p>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<b>Total</b>
+										<p id="quote_total">Ante Diem III Nonas MMXV</p>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<b>Anticipo requerido</b>
+										<p id="quote_advance_payment">Ante Diem III Nonas MMXV</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" id="quote_footer" data-tap-toggle="false">
+				<div class="row center-xs">
+					<div class="col-xs">
+						<div class="box">
+								<a href="#" id="disagree_quote" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange">
+									<i class='zmdi zmdi-close zmd-2x'></i>
+									Rechazar
+								</a>
+						</div>
+					</div>
+					<div class="col-xs">
+						<div class="box">
+							<a href="#" id="agree_quote" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange">
+								<i class='zmdi zmdi-check zmd-2x'></i>
+								Aceptar
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="serviceDeliveryPage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i></a>
+				<h1 id="titleNotification" class="">Servicio terminado</h1>
+			</div>
+
+			<div id="main" role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs">
+						<div class="col-xs-10">
+							<br>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Fecha terminación</b>
+									<p id="delivery_date">Ante Diem III Nonas MMXV</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Taller</b>
+									<p id="delivery_workshop">Commodo Consequat</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Vehículo</b>
+									<p id="delivery_car">Nostrud Exercitation MMXIV, SN 1234567890</p>
+								</div>
+							</div>
+							<p>El servicio técnico ha terminado, puede pasar a recoger su vehículo al taller.</p>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" id="delivery_footer" data-tap-toggle="false">
+				<div class="row center-xs">
+					<div class="col-xs">
+						<div class="box">
+							<a href="#" id="agree_delivery" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange"><i class='zmdi zmdi-check zmd-2x'></i>Enterado</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="scheduledServicePage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i></a>
+				<h1 id="titleNotification" class="">Servicio técnico</h1>
+			</div>
+
+			<div id="main" role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs">
+						<div class="col-xs-10">
+							<div class="row">
+								<div class="col-xs-12">
+									<p><b>Es tiempo de realizar servicio técnico a su vehículo</b></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Descripción del servicio</b>
+									<p id="scheduled_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Vehículo</b>
+									<p id="scheduled_car">Lorem Impsum Et</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Número de serie</b>
+									<p id="scheduled_serial_number">Commodo Consequat</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Servicio requerido a los KM</b>
+									<p id="scheduled_required_km">Commodo Consequat</p>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<b>Servicio requerido a la fecha</b>
+									<p id="scheduled_required_date">Lorem Impsum Et</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<b>Kilometraje actual</b>
+									<p id="scheduled_current_km">Lorem Impsum Et</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="kmCapturePage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i>
+				</a>
+				<h1 id="titleNotification" class="">Captura de kilometraje</h1>
+			</div>
+
+			<div id="main" role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs">
+						<div class="col-xs-10">
+							<br>
+							<div class="row">
+								<div class="col-xs-12">
+									<b>Vehículo</b>
+									<p id="kmcapture_car">Lorem Impsum Et</p>
+								</div>
+								<div class="col-xs-12">
+									<b>Número de serie</b>
+									<p id="kmcapture_serial_number">Commodo Consequat</p>
+								</div>
+								<div class="col-xs-12">
+									<b>Kilometraje anterior</b>
+									<p id="kmcapture_last_km">Lorem Impsum Et</p>
+								</div>
+								<div class="col-xs-12">
+									<b>Nuevo kilometraje</b>
+									<input type="tel" name="km" id="kmcapture_new_km" value="" data-clear-btn="true">
+								</div>
+							</div>
+							<br/>
+							<a href="#popupDialog" id="btnPopup" data-rel="popup" data-transition="pop"
+							class="ui-btn clr-btn-deep-orange" >
+								Actualizar KM
+							</a>
+						</div>
+					</div>
+					<br>
+				</div>
+				<div data-role="popup" id="popupDialog">
+					<div data-role="header">
+						<h1 class='nd-title'>¿Es correcto el kilometraje?</h1>
+					</div>
+
+					<div data-role="content">
+						<center>
+							El kilometraje anterior es: <br>
+							<span id="kmcapture_last_km_popup">10,000</span> KM<br><br>
+							El kilometraje nuevo es: <br>
+							<b><span id="kmcapture_new_km_popup">10,500</span> KM</b><br><br>
+							¿Es correcto?
+						</center>
+						<br>
+						<a href="#" data-rel="back" data-role="button" class="clr-btn-deep-orange" id="btnUpdateKm">
+							Si, actualizar
+						</a>
+						<a href="#" data-rel="back" data-role="button" >
+							No, corregir
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="carPage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i>
+				</a>
+				<h1 class="">Vehículo</h1>
+			</div>
+
+			<div id="main" role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="card-media">
+								<img id="car_photo">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="row around-xs" >
+								<div class="col-xs-10">
+									<br>
+									<div class="row">
+										<div class="col-xs-6">
+											<b>Tag</b>
+											<p id="car_tag">Lorem Impsum Et</p>
+										</div>
+										<div class="col-xs-6">
+											<b>Estatus</b>
+											<p id="car_status">Lorem Impsum Et</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<b>Marca</b>
+											<p id="car_brand">Lorem Impsum Et</p>
+										</div>
+										<div class="col-xs-6">
+											<b>Modelo</b>
+											<p id="car_model">Commodo Consequat</p>
+										</div>
+										<div class="col-xs-6">
+											<b>Color</b>
+											<p id="car_color">Commodo Consequat</p>
+										</div>
+										<div class="col-xs-6">
+											<b>Año</b>
+											<p id="car_year">Lorem Impsum Et</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<b>Número de serie</b>
+											<p id="car_serial_number">I II III IV V VI VII VIII IX X</p>
+										</div>
+										<div class="col-xs-6">
+											<b>Número de placas</b>
+											<p id="car_license_plate">I II III IV V VI VII VIII IX X</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<b>Kilometraje</b>
+											<p id="car_km">Lorem Impsum Et</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div class="row center-xs">
+					<div class="col-xs">
+						<div class="box">
+								<a href="#" id="car_history" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange">
+									<i class="material-icons">history</i><br>Historial
+								</a>
+						</div>
+					</div>
+					<div class="col-xs">
+						<div class="box">
+							<a href="#" id="car_kmcapture" class="ui-btn ui-btn-icon-block clr-btn-accent-deep-orange">
+								<i class="material-icons">input</i><br>Captura de KM
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="page" id="historyPage">
+			<div data-role="header" data-position="fixed" class="" data-tap-toggle="false">
+				<a href="#" class="ui-btn ui-btn-left" data-rel="back">
+					<i class="zmdi zmdi-chevron-left zmd-2x"></i>
+				</a>
+				<h1 class="">Historial</h1>
+			</div>
+
+			<div id="main" role="main" class="ui-content" data-inset="false" >
+				<div class="nd2-card">
+					<div class="row around-xs" >
+						<div class="col-xs-10">
+							<br>
+							<div class="row">
+								<div class="col-xs-4 col-sm-2">
+									<div class="row">
+										<div class="col-xs-2">
+											<span style="width:1.25em; height:1.25em; border-radius: 50%; display:inline-block" class="clr-bg-grey"></span>
+										</div>
+										<div class="col-xs-1"></div>
+										<div class="col-xs-8">
+											Pendiente
+										</div>
+									</div>     
+								</div>
+								<div class="col-xs-4 col-sm-2">
+									<div class="row">
+										<div class="col-xs-2" >
+											<span style="width:1.25em; height:1.25em; border-radius: 50%; display:inline-block" class="clr-bg-indigo"></span>
+										</div>
+										<div class="col-xs-1"></div>
+										<div class="col-xs-8">En proceso</div>
+									</div>     
+								</div>
+								<div class="col-xs-4 col-sm-2">
+									<div class="row">
+										<div class="col-xs-2">
+											<span style="width:1.25em; height:1.25em; border-radius: 50%; display:inline-block" class="clr-bg-yellow"></span>
+										</div>
+										<div class="col-xs-1"></div>
+										<div class="col-xs-8">
+											Esperando autorizacion
+										</div>
+									</div>     
+								</div>
+								<div class="col-xs-4 col-sm-2">
+									<div class="row">
+										<div class="col-xs-2">
+											<span style="width:1.25em; height:1.25em; border-radius: 50%; display:inline-block" class="clr-bg-green"></span>
+										</div>
+										<div class="col-xs-1"></div>
+										<div class="col-xs-8">
+											Aceptado
+										</div>
+									</div>     
+								</div>
+								<div class="col-xs-4 col-sm-2">
+									<div class="row">
+										<div class="col-xs-2">
+											<span style="width:1.25em; height:1.25em; border-radius: 50%; display:inline-block" class="clr-bg-red"></span>
+										</div>
+										<div class="col-xs-1"></div>
+										<div class="col-xs-8">
+											Rechazado
+										</div>
+									</div>     
+								</div>
+							</div>
+							<hr>
+							<table data-role="table" data-mode="reflow" 
+								class="ui-responsive table-stroke" id="historyTable">
+								<thead>
+									<tr>
+										<th>Ingreso</th>
+										<th>Terminado</th>
+										<th>Salida</th>
+										<th>Taller</th>
+										<th>Estatus</th>
+									</tr>
+								</thead>
+								<tbody id="historyBody">
+								</tbody>
+							</table>
+							
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="panel" id="main_menu" data-display="overlay" data-position-fixed="true" style="background:white">
+			<div class='nd2-sidepanel-profile'>
+				<img class='profile-background' src="images/background.jpeg" />
+				<div class="row">
+					<div class='col-xs-4 center-xs'>
+						<div class='box'>
+							<img class="profile-thumbnail" src="images/icon-user-default.png" />
+						</div>
+					</div>
+					<div class='col-xs-8'>
+						<div class='box profile-text'>
+							<strong name="carOwnerName">Nombre propietario</strong>
+							<span name="carOwnerUsername" class='subline'>nombre de usuario</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#" class="ui-mini ui-inline top-right-link" id="editProfile">
+				<i class="zmdi zmdi-edit"></i> 
+				Editar
+			</a>
+			<ul data-role="listview" data-inset="false" data-icon="false">
+				<li><a href="#carsPage" data-ajax='false' data-icon="false" data-transition="slideup">Vehículos</a></li>
+			</ul>
+			<ul data-role="listview" data-inset="false" data-icon="false">
+				<li><a href="#notfPage" data-ajax='false' data-icon="false" data-transition="slideup">Notificaciones</a></li>
+			</ul>
+			<hr class="inset">
+			<ul data-role="listview" data-inset="false" data-icon="false">
+				<li><a href="#" data-ajax='false' data-icon="false" id="logout">Cerrar sesión</a></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+		<script src="js/jquery.mobile.min.js"></script>
+		<script src="vendor/waves/waves.min.js"></script>
+		<script src="vendor/wow/wow.min.js"></script>
+		<script src="js/nativedroid2.js"></script>
+		<script src="nd2settings.js"></script>
+		<script src="vendor/swipebox/js/jquery.swipebox.min.js"></script>
+		<script src="vendor/macek/jquery.serialize-object.min.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>
